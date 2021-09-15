@@ -53,4 +53,8 @@ exports.updateTask = async(req, res) => {
             },
         },
     });
+
+    res.json({
+        message: result ? 'Success' : 'Error'
+    });
 };
