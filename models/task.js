@@ -15,7 +15,7 @@ module.exports = (sequelize, DataTypes) => {
   };
   Task.init({
     text: DataTypes.STRING,
-    date: DataTypes.STRING
+    dueOn: DataTypes.STRING
   }, {
     sequelize,
     modelName: 'Task',

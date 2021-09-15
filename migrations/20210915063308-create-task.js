@@ -11,7 +11,7 @@ module.exports = {
       text: {
         type: Sequelize.STRING
       },
-      date: {
+      dueOn: {
         type: Sequelize.STRING
       },
       createdAt: {
