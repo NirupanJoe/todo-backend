@@ -37,3 +37,20 @@ exports.deleteTask = async(req, res) => {
         message: result ? 'Success' : 'ID does not exists',
     });
 };
+
+exports.updateTask = async(req, res) => {
+    const { text, date } = req.body;
+    const { task_id } = req.params;
+
+    const result = await task.update({
+        text,
+        date,
+    },
+    {
+        where: {
+            id: {
+                [eq]: task_id,
+            },
+        },
+    });
+};
