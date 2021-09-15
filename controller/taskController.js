@@ -4,10 +4,10 @@ const sequelize = require('sequelize');
 const { eq } = sequelize.Op;
 
 exports.createTask = async(req, res) => {
-    const { text, date } = req.body;
+    const { text, dueOn } = req.body;
     const result = await task.create({
         text,
-        date,
+        dueOn,
     });
 
     res.json({
@@ -15,7 +15,7 @@ exports.createTask = async(req, res) => {
     });
 };
 
-exports.allTask = async(req, res) => {
+exports.listTask = async(req, res) => {
     const result = await task.findAll();
 
     res.json({
@@ -39,12 +39,12 @@ exports.deleteTask = async(req, res) => {
 };
 
 exports.updateTask = async(req, res) => {
-    const { text, date } = req.body;
+    const { text, dueOn } = req.body;
     const { task_id } = req.params;
 
     const result = await task.update({
         text,
-        date,
+        dueOn,
     },
     {
         where: {
@@ -56,5 +56,20 @@ exports.updateTask = async(req, res) => {
 
     res.json({
         message: result ? 'Success' : 'Error'
+    });
+};
+
+exports.getTask = async(req, res) => {
+    const { task_id } = req.params;
+    const result = await task.findOne({
+        where: {
+            id: {
+                [eq]: task_id,
+            },
+        },
+    });
+
+    res.json({
+        task: result || 'Id does not exists',
     });
 };

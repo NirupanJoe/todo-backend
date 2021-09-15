@@ -14,7 +14,7 @@ exports.createTodo = async(req, res) => {
     });
 };
 
-exports.allTodo = async(req, res) => {
+exports.listTodo = async(req, res) => {
     const result = await todo.findAll();
 
     res.json({
@@ -56,5 +56,20 @@ exports.updateTodo = async(req, res) => {
 
     res.json({
         message: result ? 'Success' : 'Error'
+    });
+};
+
+exports.getTodo = async(req, res) => {
+    const { todo_id } = req.params;
+    const result = await todo.findOne({
+        where: {
+            id: {
+                [Op.eq]: todo_id,
+            },
+        },
+    });
+
+    res.json({
+        task: result || 'Id does not exists',
     });
 };
