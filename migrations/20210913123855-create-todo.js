@@ -11,7 +11,7 @@ module.exports = {
       text: {
         type: Sequelize.STRING
       },
-      isCompleted: {
+      completed: {
         type: Sequelize.BOOLEAN
       },
       createdAt: {
