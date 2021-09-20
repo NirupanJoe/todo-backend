@@ -10,17 +10,13 @@ exports.createTask = async(req, res) => {
         dueOn,
     });
 
-    res.json({
-        message: result ? 'Success' : 'Error',
-    });
+    res.json(result);
 };
 
 exports.listTask = async(req, res) => {
     const result = await task.findAll();
 
-    res.json({
-        task: result,
-    });
+    res.json(result);
 };
 
 exports.deleteTask = async(req, res) => {
@@ -33,9 +29,7 @@ exports.deleteTask = async(req, res) => {
         },
     });
 
-    res.json({
-        message: result ? 'Success' : 'ID does not exists',
-    });
+    res.json(result);
 };
 
 exports.updateTask = async(req, res) => {
@@ -54,9 +48,7 @@ exports.updateTask = async(req, res) => {
         },
     });
 
-    res.json({
-        message: result ? 'Success' : 'Error'
-    });
+    res.json(result);
 };
 
 exports.getTask = async(req, res) => {
@@ -69,7 +61,5 @@ exports.getTask = async(req, res) => {
         },
     });
 
-    res.json({
-        task: result || 'Id does not exists',
-    });
+    res.json(result);
 };
